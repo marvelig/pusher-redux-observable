@@ -1,6 +1,6 @@
 {
   "name": "pusher-redux-observable",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "redux-observable epic for Pusher",
   "main": "dist/index.js",
   "scripts": {
