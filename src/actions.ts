@@ -70,3 +70,11 @@ export type PusherAction =
     PusherSubscribeChannelAction | 
     PusherUnubscribeChannelAction | 
     PusherMessageReceivedAction
+
+export const PUSHER_CONNECT = '@@pusher/CONNECT'
+export const PUSHER_DISCONNECT = '@@pusher/DISCONNECT'
+export const PUSHER_CONNECTION_SUCCESS = '@@pusher/CONNECTION_SUCCESS'
+export const PUSHER_CONNECTION_ERROR = '@@pusher/CONNECTION_ERROR'
+export const PUSHER_SUBSCRIBE_CHANNEL = '@@pusher/SUBSCRIBE_CHANNEL'
+export const PUSHER_UNSUBSCRIBE_CHANNEL = '@@pusher/UNSUBSCRIBE_CHANNEL'
+export const PUSHER_MESSAGE_RECEIVED = '@@pusher/MESSAGE_RECEIVED'

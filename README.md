@@ -3,7 +3,7 @@ redux-observable epic for Pusher
 
 This project brings Pusher, rxjs Observables, and Redux together into one single flow. At the core of this flow is the [redux-observable](https://redux-observable.js.org) package which allows you to listen and respond to streams of redux actions asynchronously using [rxjs Observables](http://reactivex.io/rxjs/manual/index.html).
 
-###Installation
+### Installation
 
 ```
 npm i pusher-redux-observable -D
@@ -28,7 +28,7 @@ const store = createStore(
 
 After you have added the pusherEpic to your middleware chain, you can then start controlling Pusher by dispatching redux actions. The only way to interact with this package is by dispatching actions - actions in, actions out.
 
-###Create a connection
+### Create a connection
 
 To create a new connection dispatch a `PUSHER_CONNECT` action:
 
@@ -48,22 +48,23 @@ This will get picked up by the epic and a new connection will be created, which 
 
 To end the connection dispatch a `PUSHER_DISCONNECT` action
 
-###Subscribe to a channel
+### Subscribe to a channel
 
-To subscribe to a channel dispatch a `PUSHER_SUBSCRIBE_CHANNEL` action
+Once you have successfully connected, you will no doubt wish to subscribe to a channel. To subscribe to a channel you must dispatch a `PUSHER_SUBSCRIBE_CHANNEL` action with the name of the channel as a string
 
 ```
 import {PUSHER_SUBSCRIBE_CHANNEL} from 'pusher-redux-observable'
 
-dispatch({
-    type: PUSHER_SUBSCRIBE_CHANNEL,
-    channel: 'foo'
-})
+const subscribeToChannels = action$ =>
+        action$.ofType(PUSHER_CONNECTION_SUCCESS)
+            .mapTo({type: PUSHER_SUBSCRIBE_CHANNEL, channel: 'myChannel'})
 ```
 
-Similarly, to unsubscribe from a channel dispatch a `PUSHER_SUBSCRIBE_CHANNEL` with the name of the channel.
+In this snippet we are listening for the `PUSHER_CONNECTION_SUCCESS` action and emitting a `PUSHER_SUBSCRIBE_CHANNEL` action in response
 
-###Receiving messages
+To unsubscribe to a channel you must similarly dispatch a `PUSHER_UNSUBSCRIBE_CHANNEL` action with the name of the channel
+
+### Receiving messages
 When messages are received a `PUSHER_MESSAGE_RECEIVED` action will be emitted. This action has the following interface:
 
 ```
@@ -74,6 +75,6 @@ When messages are received a `PUSHER_MESSAGE_RECEIVED` action will be emitted. T
 }
 ```
 
-Since we are using redux-observable you may wish to write some other epics that respond to these actions and dispatch further actions.
+Most likely you will wish to write other epics that respond to these actions and dispatch further actions.
 
 
