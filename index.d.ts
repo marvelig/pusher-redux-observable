@@ -113,7 +113,7 @@ export const disconnectFromPusher:
  * @param store 
  */
 export const subscribeToChannel: 
-    (action$: ActionsObservable<PusherSubscribeChannelAction>, store: Store<any>) => Observable<PusherAction> =>
+    (action$: ActionsObservable<PusherSubscribeChannelAction>, store: Store<any>) => Observable<PusherAction>
 
 /**
  * An epic to unsubscribe from a channel
@@ -122,7 +122,7 @@ export const subscribeToChannel:
  * @param store 
  */
 export const unsubscribeFromChannel:
-    (action$: ActionsObservable<PusherSubscribeChannelAction>, store: Store<any>) => Observable<PusherAction> =>
+    (action$: ActionsObservable<PusherSubscribeChannelAction>, store: Store<any>) => Observable<PusherAction>
 
 /**
  * Combine all the epics into a single pusher epic
