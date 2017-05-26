@@ -40,6 +40,7 @@ export interface PusherConnectionErrorAction {
  */
 export interface PusherSubscribeChannelAction extends BasePusherAction {
     type: '@@pusher/SUBSCRIBE_CHANNEL'
+    events: string[]
 }
 
 /**
@@ -62,13 +63,13 @@ export interface PusherMessageReceivedAction extends BasePusherAction {
  * This is very useful if you have a Pusher reducer which handles
  * all the pusher actions in one place
  */
-export type PusherAction = 
+export type PusherAction =
     PusherConnectAction |
     PusherDisconnectAction |
     PusherConnectionSuccessAction |
     PusherConnectionErrorAction |
-    PusherSubscribeChannelAction | 
-    PusherUnubscribeChannelAction | 
+    PusherSubscribeChannelAction |
+    PusherUnubscribeChannelAction |
     PusherMessageReceivedAction
 
 export const PUSHER_CONNECT = '@@pusher/CONNECT'
